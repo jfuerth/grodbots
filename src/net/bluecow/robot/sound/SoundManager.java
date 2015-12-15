@@ -37,6 +37,7 @@
 package net.bluecow.robot.sound;
 
 import java.io.IOException;
+import java.io.BufferedInputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -126,7 +127,8 @@ public class SoundManager {
                 line = AudioSystem.getLine(linfo);
                 Clip clip = (Clip) line;
                 //clip.addLineListener(this);
-                AudioInputStream ais = AudioSystem.getAudioInputStream(resourceLoader.getResourceAsStream(path));
+                BufferedInputStream bis = new BufferedInputStream(resourceLoader.getResourceAsStream(path));
+                AudioInputStream ais = AudioSystem.getAudioInputStream(bis);
                 clip.open(ais);
                 retval = new ClipEntry(name, path, clip);
             } else if (type == EntryType.MOD) {

@@ -2,3 +2,5 @@ build
 eclipse_build
 robot.jar
 robot_editor.jar
+*.jar
+*.list
